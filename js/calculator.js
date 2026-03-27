@@ -73,7 +73,7 @@
       }
     }
 
-    return { boilerKw: boilerKw, radiatorSections: radiatorSections, recommendedBoilerKw: recommendedBoilerKw };
+    return { boilerKw: boilerKw, heatLoadKw: Math.round(requiredKw * 10) / 10, radiatorSections: radiatorSections, recommendedBoilerKw: recommendedBoilerKw };
   }
 
   // CommonJS export for Node.js testing; browser accesses via window.IstiLikCalc

@@ -98,7 +98,7 @@
         lastResult.radiatorSections + ' ' + t.sections;
     }
 
-    byId('result-heat-kw').textContent = lastResult.boilerKw.toFixed(1);
+    byId('result-heat-kw').textContent = lastResult.heatLoadKw.toFixed(1);
   }
 
   /* ── Recalculate ── */
