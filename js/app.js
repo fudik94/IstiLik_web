@@ -87,9 +87,9 @@
     var t = TRANSLATIONS[state.lang];
     var kwUnit = t.kwUnit || 'kW';
 
-    byId('result-boiler-kw').textContent = lastResult.boilerKw.toFixed(1);
-    byId('result-recommended').textContent =
-      t.recommended.replace('{size}', lastResult.recommendedBoilerKw);
+    byId('result-recommended-kw').textContent = lastResult.recommendedBoilerKw;
+    byId('result-boiler-kw').textContent =
+      t.calculatedPower.replace('{value}', lastResult.boilerKw.toFixed(1));
 
     if (lastResult.radiatorSections === 0) {
       byId('result-sections').textContent = '\u2014';
@@ -129,10 +129,10 @@
 
   function clearResults() {
     lastResult = null; lastParams = null;
-    byId('result-boiler-kw').textContent = '\u2014';
-    byId('result-sections').textContent  = '\u2014';
-    byId('result-heat-kw').textContent   = '\u2014';
-    byId('result-recommended').textContent = '';
+    byId('result-recommended-kw').textContent = '\u2014';
+    byId('result-boiler-kw').textContent  = '';
+    byId('result-sections').textContent   = '\u2014';
+    byId('result-heat-kw').textContent    = '\u2014';
     byId('btn-pdf').disabled = true;
   }
 
