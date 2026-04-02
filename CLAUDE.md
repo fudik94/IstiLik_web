@@ -31,3 +31,14 @@ Then open http://localhost:8080
 
 - Spec: `docs/superpowers/specs/2026-03-27-istilik-web-design.md`
 - Plan: `docs/superpowers/plans/2026-03-27-istilik-web.md`
+
+## Git rules
+
+**Commit author is only the user.** Never add `Co-Authored-By`, `Co-authored-by`, or any AI/Claude attribution to commit messages.
+
+**Never commit or push these files/folders — local only:**
+- `CLAUDE.md`
+- `docs/`
+- `.claude/`
+
+Make sure all of the above are listed in `.gitignore`.
