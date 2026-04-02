@@ -18,39 +18,6 @@ Open the site and instantly calculate the required boiler capacity, number of ra
 
 ---
 
-## Screenshots
-
-> Desktop — two-column layout
-
-![desktop](assets/screenshot-desktop.png)
-
-> Mobile — single column
-
-![mobile](assets/screenshot-mobile.png)
-
----
-
-## Getting Started
-
-No installation or build step needed. Just open the file:
-
-```bash
-# Clone the repository
-git clone https://github.com/fudik94/IstiLik_web.git
-cd IstiLik_web
-
-# Open directly in browser
-open index.html
-```
-
-For PWA and service worker support (requires `localhost`):
-
-```bash
-python -m http.server 8080
-# Then open: http://localhost:8080
-```
-
----
 
 ## Calculation Parameters
 
@@ -90,13 +57,6 @@ IstiLik_web/
 
 ---
 
-## Running Tests
-
-```bash
-node js/calculator.test.js
-```
-
----
 
 ## Mobile App
 
