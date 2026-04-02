@@ -1,6 +1,6 @@
 // js/translations.js
 // All UI strings. To add a language: add a new key here and a lang-btn in index.html.
-// NOTE: This file is browser-only (no module.exports). Access via global TRANSLATIONS.
+// NOTE: Browser-only global — no module.exports. Access via TRANSLATIONS.
 
 var TRANSLATIONS = {
   az: {

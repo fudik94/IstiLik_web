@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="az" data-lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FF6D00">
+  <title>IstiLik — İstilik Kalkulyatoru</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <div class="logo-icon">&#x1F525;</div>
+      <span class="logo-text">IstiLik</span>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="az">AZ</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </header>
+
+  <main class="calculator-layout">
+    <!-- Form column -->
+    <section class="form-column">
+      <h1 class="section-title" data-i18n="title"></h1>
+
+      <div class="input-group">
+        <div class="glass-card">
+          <div class="input-row">
+            <div class="input-field">
+              <label for="area" data-i18n="area"></label>
+              <input type="number" id="area" min="5" max="1000" step="1" placeholder="50">
+              <span class="input-error" id="area-error"></span>
+            </div>
+            <div class="input-field">
+              <label for="height" data-i18n="height"></label>
+              <input type="number" id="height" min="2" max="6" step="0.1" placeholder="2.7">
+              <span class="input-error" id="height-error"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <label class="card-label" data-i18n="housingType"></label>
+          <div class="toggle-group" id="housing-toggle">
+            <button class="toggle-btn active" data-value="0" data-i18n="apartment"></button>
+            <button class="toggle-btn" data-value="1" data-i18n="house"></button>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <label class="card-label" data-i18n="systemType"></label>
+          <div class="toggle-group" id="system-toggle">
+            <button class="toggle-btn active" data-value="0" data-i18n="radiators"></button>
+            <button class="toggle-btn" data-value="1" data-i18n="underfloor"></button>
+            <button class="toggle-btn" data-value="2" data-i18n="mixed"></button>
+          </div>
+        </div>
+
+        <div class="glass-card advanced-toggle" id="advanced-toggle">
+          <span data-i18n="advancedParams"></span>
+          <span class="advanced-arrow">&#9658;</span>
+        </div>
+
+        <div class="advanced-section" id="advanced-section">
+          <div class="glass-card">
+            <label class="card-label" data-i18n="wallType"></label>
+            <div class="toggle-group" id="wall-toggle">
+              <button class="toggle-btn active" data-value="0">1</button>
+              <button class="toggle-btn" data-value="1">2</button>
+              <button class="toggle-btn" data-value="2">3</button>
+              <button class="toggle-btn" data-value="3">4</button>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <label class="card-label" data-i18n="insulation"></label>
+            <div class="toggle-group" id="insulation-toggle">
+              <button class="toggle-btn" data-value="0" data-i18n="insulationGood"></button>
+              <button class="toggle-btn active" data-value="1" data-i18n="insulationMedium"></button>
+              <button class="toggle-btn" data-value="2" data-i18n="insulationPoor"></button>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <label class="card-label" data-i18n="floorType"></label>
+            <div class="toggle-group" id="floor-toggle">
+              <button class="toggle-btn active" data-value="0" data-i18n="floorStandard"></button>
+              <button class="toggle-btn" data-value="1" data-i18n="floorAttic"></button>
+            </div>
+          </div>
+
+          <div class="glass-card" id="radiator-power-card">
+            <div class="input-field">
+              <label for="radiator-power" data-i18n="radiatorPower"></label>
+              <input type="number" id="radiator-power" min="50" max="500" step="10" value="180">
+            </div>
+          </div>
+
+          <div class="glass-card" id="floor-area-card" style="display:none">
+            <div class="input-field">
+              <label for="floor-area" data-i18n="floorArea"></label>
+              <input type="number" id="floor-area" min="0" max="1000" step="1" value="0">
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <label class="card-label" data-i18n="dhwPoints"></label>
+            <div class="toggle-group" id="dhw-toggle">
+              <button class="toggle-btn active" data-value="1">1</button>
+              <button class="toggle-btn" data-value="2">2</button>
+              <button class="toggle-btn" data-value="3">3</button>
+              <button class="toggle-btn" data-value="4">4</button>
+              <button class="toggle-btn" data-value="5">5</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results column -->
+    <section class="results-column">
+      <h2 class="section-title" data-i18n="resultsTitle"></h2>
+
+      <div class="result-main glass-card orange-glow">
+        <div class="result-label" data-i18n="boilerPower"></div>
+        <div class="result-value">
+          <span id="result-boiler-kw">&#8212;</span>
+          <span class="result-unit">kVt</span>
+        </div>
+        <div class="result-hint" id="result-recommended"></div>
+      </div>
+
+      <div class="result-row">
+        <div class="result-secondary glass-card">
+          <div class="result-label" data-i18n="radiatorSections"></div>
+          <div class="result-value">
+            <span id="result-sections">&#8212;</span>
+          </div>
+        </div>
+        <div class="result-secondary glass-card">
+          <div class="result-label" data-i18n="heatPower"></div>
+          <div class="result-value">
+            <span id="result-heat-kw">&#8212;</span>
+            <span class="result-unit">kVt</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-pdf" id="btn-pdf" disabled>
+        <span aria-hidden="true">&#128196;</span>
+        <span data-i18n="downloadPdf"></span>
+      </button>
+
+      <button class="btn-reset" id="btn-reset">
+        <span aria-hidden="true">&#x21BA;</span>
+        <span data-i18n="reset"></span>
+      </button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>&#169; 2025 IstiLik</span>
+    <a href="#" class="footer-app-link">
+      <div class="logo-icon-sm">&#x1F525;</div>
+      <span data-i18n="downloadApp"></span>
+    </a>
+  </footer>
+
+  <!-- Print-only report (populated by app.js, visible only when printing) -->
+  <div class="print-report" id="print-report" aria-hidden="true">
+    <div class="print-header">
+      <div class="logo">
+        <div class="logo-icon">&#x1F525;</div>
+        <span class="logo-text">IstiLik</span>
+      </div>
+      <h2 data-i18n="reportTitle"></h2>
+    </div>
+    <div id="print-params"></div>
+    <div id="print-results"></div>
+  </div>
+
+  <script src="js/calculator.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
